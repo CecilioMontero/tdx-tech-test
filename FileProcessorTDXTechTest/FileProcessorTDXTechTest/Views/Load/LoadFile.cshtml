@@ -1,0 +1,103 @@
+﻿@model OperationResult<LoadedFileRows>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-md-10"><h2>CSV File Data</h2></div>
+    <div class="col-md-1"><button type="button" onclick= "history.go(-1)" class="btn btn-success">Back home page</button></div>
+</div>
+
+<br><br>
+
+<div>
+@if (Model.OperationFormatError != null)
+{
+    if (Model.OperationFormatError.Count != 0)
+    {
+        <h3>File has some Format Errors</h3><br>
+
+        <table class="table" class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Error Description</th> 
+                </tr>
+            </thead>
+
+            @foreach (var formatError in Model.OperationFormatError)
+            {
+                <tr>
+                    <td>@Html.Raw(formatError)</td>
+                </tr>
+            }
+        </table>
+    }
+}
+
+@if (Model.OperationValidationError != null)
+{
+    if (Model.OperationValidationError.Count != 0)
+    {
+        <h3>File has some Validation Errors</h3><br>
+
+        <table class="table" class="table table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Error Code</th>
+                <th scope="col">Description</th>
+            </tr>
+            </thead>
+
+            @foreach (var error in Model.OperationValidationError)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(mod => error.ErrorCode)</td>
+                    <td>@Html.DisplayFor(mod => error.ErrorMessage)</td>
+                </tr>
+            }
+        </table>
+    }
+}
+
+@if (Model.OperationValue != null)
+{
+    if (Model.OperationValue.FileRows.Count != 0)
+    {
+        <h3>File data is displayed</h3><br>
+
+        <table class="table" class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="row"> </th>
+                    <th scope="col">OrderId</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">ItemType</th>
+                    <th scope="col">OrderDate</th>
+                    <th scope="col">UnitsSold</th>
+                    <th scope="col">UnitPrice</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            @{int i = 1;}
+            @foreach (var row in Model.OperationValue.FileRows)
+            {
+                <tr>
+                    <th scope="row">@i</th>
+                    <td>@Html.DisplayFor(mod => row.OrderId)</td>
+                    <td>@Html.DisplayFor(mod => row.Country)</td>
+                    <td>@Html.DisplayFor(mod => row.ItemType)</td>
+                    <td>@Html.DisplayFor(mod => row.OrderDate)</td>
+                    <td>@Html.DisplayFor(mod => row.UnitsSold)</td>
+                    <td>@Html.DisplayFor(mod => row.UnitPrice)</td>
+                </tr>
+                i++;
+            }
+            </tbody>
+        </table>
+    }
+}
+
+</div>
