@@ -1,1 +1,0 @@
-# tdx-tech-test
