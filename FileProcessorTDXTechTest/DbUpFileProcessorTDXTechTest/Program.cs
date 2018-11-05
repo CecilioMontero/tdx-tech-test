@@ -12,6 +12,8 @@ namespace DbUpFileProcessorTDXTechTest
             var connectionString =
                 args.FirstOrDefault()
                 ?? "Server=(LocalDb)\\MSSQLLocalDB;Database=FileProcessorTDXTechTestDB;Trusted_Connection=True;MultipleActiveResultSets=True";
+            
+            EnsureDatabase.For.SqlDatabase(connectionString);
 
             var upgrader =
                 DeployChanges.To
