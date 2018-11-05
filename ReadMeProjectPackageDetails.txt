@@ -8,11 +8,11 @@ Package used in this project
 
 	FluentValidation.AspNetCore Version: 8.0.100
 
-    CsvHelper Version: 7.0.0.0
+    	CsvHelper Version: 7.0.0.0
 
 	Bootsrap 4
 
-    FluentValidationAspNetCore  Version= 8.0.100   
+    	FluentValidationAspNetCore  Version= 8.0.100   
 
 	Dapper  Version= 1.50.5   
 
@@ -22,8 +22,8 @@ Package used in this project
 
 	FluentAssertions  Version= 5.4.2   
     
-    NSubstitute  Version= 3.1.0   
+    	NSubstitute  Version= 3.1.0   
 
-    NUnit  Version= 3.11.0   
+   	NUnit  Version= 3.11.0   
 
 	AutoFixture Version= 4.5.0
